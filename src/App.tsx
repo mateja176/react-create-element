@@ -1,5 +1,11 @@
 import { Button, TextField } from '@material-ui/core';
-import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import React, {
+  createElement,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 const App: React.FC = () => {
   const [html, setHtml] = useState('');
@@ -51,6 +57,7 @@ const App: React.FC = () => {
         </Button>
       </form>
       <div ref={contentRef as any} dangerouslySetInnerHTML={{ __html: html }} />
+      {createElement('div', { style: { color: 'royalblue' } }, 'Hi')}
     </main>
   );
 };
