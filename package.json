@@ -11,6 +11,7 @@
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hyperscript": "^3.2.0",
     "react-scripts": "3.0.1",
     "typescript": "3.4.5"
   },
@@ -36,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "@types/ramda": "^0.26.8"
+    "@types/ramda": "^0.26.8",
+    "@types/react-hyperscript": "^3.0.4"
   }
 }
