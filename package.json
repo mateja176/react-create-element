@@ -9,11 +9,13 @@
     "@types/react": "16.8.17",
     "@types/react-dom": "16.8.4",
     "hyperscript-helpers": "^3.0.3",
+    "lit-html": "^1.0.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hyperscript": "^3.2.0",
     "react-scripts": "3.0.1",
+    "sanitize-html": "^1.20.1",
     "typescript": "3.4.5"
   },
   "scripts": {
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@types/ramda": "^0.26.8",
-    "@types/react-hyperscript": "^3.0.4"
+    "@types/react-hyperscript": "^3.0.4",
+    "@types/sanitize-html": "^1.18.3"
   }
 }
