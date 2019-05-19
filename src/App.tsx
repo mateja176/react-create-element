@@ -6,6 +6,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import sanitizeHtml from 'sanitize-html';
+
+const sanitize = (html: string) =>
+  sanitizeHtml(html, { allowedTags: false, allowedAttributes: false });
 
 const App: React.FC = () => {
   const [html, setHtml] = useState('');
@@ -13,15 +17,15 @@ const App: React.FC = () => {
   const handleSubmit = <E extends SyntheticEvent>(e: E) => {
     e.preventDefault();
 
-    localStorage.setItem('html', html);
+    localStorage.setItem('html', sanitize(html));
   };
 
   const contentRef = useRef<HTMLDivElement>();
 
-  console.log('first called with undefined', contentRef.current);
+  console.log(contentRef.current);
 
   useEffect(() => {
-    console.log('called after component mounted', contentRef.current);
+    (contentRef.current || document.createElement('textarea')).focus();
 
     setHtml(localStorage.getItem('html') || '');
   }, []);
@@ -57,7 +61,16 @@ const App: React.FC = () => {
         </Button>
       </form>
       <div ref={contentRef as any} dangerouslySetInnerHTML={{ __html: html }} />
-      {createElement('div', { style: { color: 'royalblue' } }, 'Hi')}
+      {createElement(
+        'div',
+        {
+          style: { color: 'royalblue' },
+          onClick: () => {
+            console.log('hello');
+          },
+        },
+        'Hi',
+      )}
     </main>
   );
 };
