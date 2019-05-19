@@ -1,16 +1,22 @@
 import { Button, TextField } from '@material-ui/core';
-import React, { SyntheticEvent, useRef, useState } from 'react';
+import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 
 const App: React.FC = () => {
   const [html, setHtml] = useState('');
 
   const handleSubmit = <E extends SyntheticEvent>(e: E) => {
     e.preventDefault();
+
+    localStorage.setItem('html', html);
   };
 
   const contentRef = useRef<HTMLDivElement>();
 
-  console.log(contentRef);
+  useEffect(() => {
+    console.log(contentRef.current);
+
+    setHtml(localStorage.getItem('html') || '');
+  }, []);
 
   return (
     <main>
@@ -23,7 +29,7 @@ const App: React.FC = () => {
       >
         <TextField
           value={html}
-          placeholder="Hello World"
+          placeholder="<h1>Hello World</h1>"
           multiline={true}
           rows={20}
           fullWidth
@@ -39,7 +45,7 @@ const App: React.FC = () => {
           }}
         />
         <Button variant="contained" type="submit">
-          Submit
+          Save
         </Button>
       </form>
       <div ref={contentRef as any} dangerouslySetInnerHTML={{ __html: html }} />
