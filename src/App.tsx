@@ -12,8 +12,10 @@ const App: React.FC = () => {
 
   const contentRef = useRef<HTMLDivElement>();
 
+  console.log('first called with undefined', contentRef.current);
+
   useEffect(() => {
-    console.log(contentRef.current);
+    console.log('called after component mounted', contentRef.current);
 
     setHtml(localStorage.getItem('html') || '');
   }, []);
